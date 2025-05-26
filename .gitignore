@@ -1,9 +1,15 @@
+# Environment variables and secrets
+myenv.txt
+.env
+*.env
+
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
+env/
 build/
 develop-eggs/
 dist/
@@ -22,26 +28,20 @@ wheels/
 
 # Virtual Environment
 venv/
-venv311/
-myenv/
-finance_venv/
 ENV/
-env/
+myenv/
 
-# Streamlit
-.streamlit/
-
-# Environment variables
-.env
-
-# OpenAI
-.openai
-
-# IDE specific files
+# IDE
 .idea/
 .vscode/
 *.swp
 *.swo
+
+# Streamlit
+.streamlit/
+
+# OpenAI
+.openai
 
 # OS specific files
 .DS_Store
