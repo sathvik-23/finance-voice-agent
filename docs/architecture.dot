@@ -1,0 +1,86 @@
+digraph G {
+  rankdir=TB;
+  
+  // Node styling
+  node [shape=box, style="filled,rounded", color="#4285F4", fillcolor="#E1F5FE", fontname="Arial", margin=0.3];
+  edge [color="#4285F4", fontname="Arial"];
+  
+  // User interface
+  subgraph cluster_ui {
+    label="User Interface";
+    style="filled,rounded";
+    color="#0D47A1";
+    fillcolor="#E3F2FD";
+    
+    StreamlitApp [label="Streamlit App\n(Web UI)"];
+  }
+  
+  // Orchestrator
+  subgraph cluster_orchestrator {
+    label="Orchestration";
+    style="filled,rounded";
+    color="#0D47A1";
+    fillcolor="#E3F2FD";
+    
+    Orchestrator [label="Orchestrator\n(FastAPI)"];
+  }
+  
+  // Agents
+  subgraph cluster_agents {
+    label="Agent Services";
+    style="filled,rounded";
+    color="#0D47A1";
+    fillcolor="#E3F2FD";
+    
+    APIAgent [label="API Agent\n(AlphaVantage, Yahoo Finance)"];
+    ScrapingAgent [label="Scraping Agent\n(SEC Filings, News)"];
+    RetrieverAgent [label="Retriever Agent\n(FAISS Vector Store)"];
+    AnalysisAgent [label="Analysis Agent\n(Financial Data Analysis)"];
+    LanguageAgent [label="Language Agent\n(Agno, LLM)"];
+    VoiceAgent [label="Voice Agent\n(Whisper STT, TTS)"];
+  }
+  
+  // External Services
+  subgraph cluster_external {
+    label="External Services";
+    style="filled,rounded";
+    color="#0D47A1";
+    fillcolor="#E3F2FD";
+    
+    AlphaVantage [label="AlphaVantage API"];
+    YahooFinance [label="Yahoo Finance API"];
+    SEC [label="SEC EDGAR"];
+    NewsServices [label="Financial News Sources"];
+    OpenAI [label="OpenAI API\n(Whisper, GPT)"];
+  }
+  
+  // Connections
+  User -> StreamlitApp [label="voice/text query"];
+  StreamlitApp -> Orchestrator [label="query/audio"];
+  Orchestrator -> StreamlitApp [label="response/audio"];
+  
+  Orchestrator -> APIAgent [label="data request"];
+  Orchestrator -> ScrapingAgent [label="crawl request"];
+  Orchestrator -> RetrieverAgent [label="retrieval request"];
+  Orchestrator -> AnalysisAgent [label="analysis request"];
+  Orchestrator -> LanguageAgent [label="generation request"];
+  Orchestrator -> VoiceAgent [label="STT/TTS request"];
+  
+  APIAgent -> AlphaVantage;
+  APIAgent -> YahooFinance;
+  ScrapingAgent -> SEC;
+  ScrapingAgent -> NewsServices;
+  LanguageAgent -> OpenAI;
+  VoiceAgent -> OpenAI;
+  
+  APIAgent -> Orchestrator [label="market data"];
+  ScrapingAgent -> Orchestrator [label="filings/news"];
+  RetrieverAgent -> Orchestrator [label="relevant context"];
+  AnalysisAgent -> Orchestrator [label="financial analysis"];
+  LanguageAgent -> Orchestrator [label="generated text"];
+  VoiceAgent -> Orchestrator [label="transcription/speech"];
+  
+  // Data flow for indexing
+  ScrapingAgent -> RetrieverAgent [label="index content", style="dashed"];
+  APIAgent -> RetrieverAgent [label="index data", style="dashed"];
+}

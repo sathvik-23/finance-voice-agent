@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f9f9f9"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" font-family="Arial" font-size="20" text-anchor="middle" font-weight="bold">Finance Voice Agent Architecture</text>
+  
+  <!-- User -->
+  <circle cx="400" cy="80" r="20" fill="#E1F5FE" stroke="#4285F4" stroke-width="2"/>
+  <text x="400" y="85" font-family="Arial" font-size="12" text-anchor="middle">User</text>
+  
+  <!-- Streamlit App -->
+  <rect x="325" y="120" width="150" height="60" rx="10" ry="10" fill="#E1F5FE" stroke="#4285F4" stroke-width="2"/>
+  <text x="400" y="150" font-family="Arial" font-size="14" text-anchor="middle">Streamlit App</text>
+  <text x="400" y="170" font-family="Arial" font-size="12" text-anchor="middle">Web UI</text>
+  
+  <!-- Orchestrator -->
+  <rect x="325" y="220" width="150" height="60" rx="10" ry="10" fill="#E1F5FE" stroke="#4285F4" stroke-width="2"/>
+  <text x="400" y="250" font-family="Arial" font-size="14" text-anchor="middle">Orchestrator</text>
+  <text x="400" y="270" font-family="Arial" font-size="12" text-anchor="middle">FastAPI</text>
+  
+  <!-- Agent Services -->
+  <rect x="50" y="320" width="150" height="60" rx="10" ry="10" fill="#E1F5FE" stroke="#4285F4" stroke-width="2"/>
+  <text x="125" y="350" font-family="Arial" font-size="14" text-anchor="middle">API Agent</text>
+  <text x="125" y="370" font-family="Arial" font-size="10" text-anchor="middle">AlphaVantage, Yahoo Finance</text>
+  
+  <rect x="225" y="320" width="150" height="60" rx="10" ry="10" fill="#E1F5FE" stroke="#4285F4" stroke-width="2"/>
+  <text x="300" y="350" font-family="Arial" font-size="14" text-anchor="middle">Scraping Agent</text>
+  <text x="300" y="370" font-family="Arial" font-size="10" text-anchor="middle">SEC Filings, News</text>
+  
+  <rect x="400" y="320" width="150" height="60" rx="10" ry="10" fill="#E1F5FE" stroke="#4285F4" stroke-width="2"/>
+  <text x="475" y="350" font-family="Arial" font-size="14" text-anchor="middle">Retriever Agent</text>
+  <text x="475" y="370" font-family="Arial" font-size="10" text-anchor="middle">FAISS Vector Store</text>
+  
+  <rect x="575" y="320" width="150" height="60" rx="10" ry="10" fill="#E1F5FE" stroke="#4285F4" stroke-width="2"/>
+  <text x="650" y="350" font-family="Arial" font-size="14" text-anchor="middle">Analysis Agent</text>
+  <text x="650" y="370" font-family="Arial" font-size="10" text-anchor="middle">Financial Analysis</text>
+  
+  <rect x="125" y="420" width="150" height="60" rx="10" ry="10" fill="#E1F5FE" stroke="#4285F4" stroke-width="2"/>
+  <text x="200" y="450" font-family="Arial" font-size="14" text-anchor="middle">Language Agent</text>
+  <text x="200" y="470" font-family="Arial" font-size="10" text-anchor="middle">Agno, LLM</text>
+  
+  <rect x="475" y="420" width="150" height="60" rx="10" ry="10" fill="#E1F5FE" stroke="#4285F4" stroke-width="2"/>
+  <text x="550" y="450" font-family="Arial" font-size="14" text-anchor="middle">Voice Agent</text>
+  <text x="550" y="470" font-family="Arial" font-size="10" text-anchor="middle">Whisper STT, TTS</text>
+  
+  <!-- External Services -->
+  <rect x="50" y="520" width="700" height="40" rx="10" ry="10" fill="#E3F2FD" stroke="#0D47A1" stroke-width="2"/>
+  <text x="400" y="545" font-family="Arial" font-size="14" text-anchor="middle">External Services: AlphaVantage, Yahoo Finance, SEC EDGAR, News Sources, OpenAI API</text>
+  
+  <!-- Connections -->
+  <!-- User to Streamlit -->
+  <line x1="400" y1="100" x2="400" y2="120" stroke="#4285F4" stroke-width="2"/>
+  <polygon points="400,120 395,110 405,110" fill="#4285F4"/>
+  
+  <!-- Streamlit to Orchestrator -->
+  <line x1="400" y1="180" x2="400" y2="220" stroke="#4285F4" stroke-width="2"/>
+  <polygon points="400,220 395,210 405,210" fill="#4285F4"/>
+  
+  <!-- Orchestrator to Agents -->
+  <line x1="400" y1="280" x2="125" y2="320" stroke="#4285F4" stroke-width="2"/>
+  <polygon points="125,320 133,313 135,323" fill="#4285F4"/>
+  
+  <line x1="400" y1="280" x2="300" y2="320" stroke="#4285F4" stroke-width="2"/>
+  <polygon points="300,320 306,311 310,321" fill="#4285F4"/>
+  
+  <line x1="400" y1="280" x2="475" y2="320" stroke="#4285F4" stroke-width="2"/>
+  <polygon points="475,320 469,311 481,311" fill="#4285F4"/>
+  
+  <line x1="400" y1="280" x2="650" y2="320" stroke="#4285F4" stroke-width="2"/>
+  <polygon points="650,320 642,313 646,323" fill="#4285F4"/>
+  
+  <line x1="400" y1="280" x2="200" y2="420" stroke="#4285F4" stroke-width="2"/>
+  <polygon points="200,420 208,413 210,423" fill="#4285F4"/>
+  
+  <line x1="400" y1="280" x2="550" y2="420" stroke="#4285F4" stroke-width="2"/>
+  <polygon points="550,420 542,413 546,423" fill="#4285F4"/>
+  
+  <!-- Agents to External Services -->
+  <line x1="125" y1="380" x2="125" y2="520" stroke="#4285F4" stroke-width="2"/>
+  <polygon points="125,520 120,510 130,510" fill="#4285F4"/>
+  
+  <line x1="300" y1="380" x2="300" y2="520" stroke="#4285F4" stroke-width="2"/>
+  <polygon points="300,520 295,510 305,510" fill="#4285F4"/>
+  
+  <line x1="200" y1="480" x2="200" y2="520" stroke="#4285F4" stroke-width="2"/>
+  <polygon points="200,520 195,510 205,510" fill="#4285F4"/>
+  
+  <line x1="550" y1="480" x2="550" y2="520" stroke="#4285F4" stroke-width="2"/>
+  <polygon points="550,520 545,510 555,510" fill="#4285F4"/>
+  
+  <!-- Data flows between agents (dashed) -->
+  <line x1="300" y1="350" x2="450" y2="350" stroke="#4285F4" stroke-width="2" stroke-dasharray="5,5"/>
+  <polygon points="450,350 440,345 440,355" fill="#4285F4"/>
+  
+  <line x1="125" y1="350" x2="450" y2="350" stroke="#4285F4" stroke-width="2" stroke-dasharray="5,5"/>
+  <polygon points="450,350 440,345 440,355" fill="#4285F4"/>
+</svg>

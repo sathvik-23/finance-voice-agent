@@ -1,0 +1,110 @@
+version: '3.8'
+
+services:
+  orchestrator:
+    build: .
+    command: python -m uvicorn orchestrator.main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    networks:
+      - finance-voice-net
+
+  api-agent:
+    build: .
+    command: python -m uvicorn agents.api_agent.service:app --host 0.0.0.0 --port 8080
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    networks:
+      - finance-voice-net
+
+  scraping-agent:
+    build: .
+    command: python -m uvicorn agents.scraping_agent.service:app --host 0.0.0.0 --port 8081
+    ports:
+      - "8081:8081"
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    networks:
+      - finance-voice-net
+
+  retriever-agent:
+    build: .
+    command: python -m uvicorn agents.retriever_agent.service:app --host 0.0.0.0 --port 8082
+    ports:
+      - "8082:8082"
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    networks:
+      - finance-voice-net
+
+  analysis-agent:
+    build: .
+    command: python -m uvicorn agents.analysis_agent.service:app --host 0.0.0.0 --port 8083
+    ports:
+      - "8083:8083"
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    networks:
+      - finance-voice-net
+
+  language-agent:
+    build: .
+    command: python -m uvicorn agents.language_agent.service:app --host 0.0.0.0 --port 8084
+    ports:
+      - "8084:8084"
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    networks:
+      - finance-voice-net
+
+  voice-agent:
+    build: .
+    command: python -m uvicorn agents.voice_agent.service:app --host 0.0.0.0 --port 8085
+    ports:
+      - "8085:8085"
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    networks:
+      - finance-voice-net
+
+  streamlit-app:
+    build: .
+    command: streamlit run streamlit_app/app.py --server.port 8501 --server.address 0.0.0.0
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    networks:
+      - finance-voice-net
+    depends_on:
+      - orchestrator
+      - api-agent
+      - scraping-agent
+      - retriever-agent
+      - analysis-agent
+      - language-agent
+      - voice-agent
+
+networks:
+  finance-voice-net:
+    driver: bridge

@@ -1,0 +1,41 @@
+```
+                      Finance Voice Agent Architecture
+                                   
+                                 +------+
+                                 | User |
+                                 +------+
+                                     |
+                                     v
+                               +-----------+
+                               |Streamlit  |
+                               |App (UI)   |
+                               +-----------+
+                                     |
+                                     v
+                               +-----------+
+                               |Orchestrator|
+                               |(FastAPI)   |
+                               +-----------+
+                                     |
+                  +------------------+-------------------+
+                  |                  |                   |
+                  v                  v                   v
+         +----------------+ +----------------+ +----------------+
+         |   API Agent    | | Scraping Agent | | Retriever Agent|
+         |(Market Data)   | |(Filings, News) | |(FAISS Vector)  |
+         +----------------+ +----------------+ +----------------+
+                  |                  |         ^       |
+                  |                  |  . . . .        |
+                  v                  v                 v
+         +----------------+ +----------------+ +----------------+
+         |Analysis Agent  | |Language Agent  | |  Voice Agent   |
+         |(Financial Data)| |(Agno, LLM)     | |(Whisper, TTS)  |
+         +----------------+ +----------------+ +----------------+
+                  |                  |                   |
+                  |                  |                   |
+                  v                  v                   v
+         +-------------------------------------------------------+
+         |             External Services & APIs                  |
+         | (AlphaVantage, Yahoo Finance, SEC, OpenAI, etc.)     |
+         +-------------------------------------------------------+
+```

@@ -1,0 +1,11 @@
+# Core dependencies - minimal version
+fastapi
+uvicorn
+streamlit
+python-dotenv
+pydantic
+httpx
+openai
+requests
+numpy
+pandas
